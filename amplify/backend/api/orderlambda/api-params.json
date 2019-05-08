@@ -1,0 +1,40 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "orderlambda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "orderlambda",
+    "apiName": "orderlambda",
+    "functionArns": [
+        {
+            "lambdaFunction": "orderlambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-marketplace-dev-20190504080643-authRole",
+        "unAuthRoleName": "amplify-marketplace-dev-20190504080643-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "orderlambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

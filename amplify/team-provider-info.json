@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-marketplace-dev-20190504080643-authRole",
+            "UnauthRoleArn": "arn:aws:iam::123826651804:role/amplify-marketplace-dev-20190504080643-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::123826651804:role/amplify-marketplace-dev-20190504080643-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-marketplace-dev-20190504080643-deployment",
+            "UnauthRoleName": "amplify-marketplace-dev-20190504080643-unauthRole",
+            "StackName": "amplify-marketplace-dev-20190504080643",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:123826651804:stack/amplify-marketplace-dev-20190504080643/804965e0-6e00-11e9-8cb9-065839e5808c"
+        },
+        "categories": {
+            "auth": {
+                "cognitob24d7a35": {}
+            }
+        }
+    }
+}
