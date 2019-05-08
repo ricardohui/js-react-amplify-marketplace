@@ -142,8 +142,7 @@ class MarketPage extends React.Component {
           </span>
         </div>
         <Tabs type="border-card" value={isMarketOwner ? "1" : "2"}>
-          {// FIXME: display this tab when the user is owner
-          isMarketOwner && (
+          {isMarketOwner && (
             <Tabs.Pane
               label={
                 <>
