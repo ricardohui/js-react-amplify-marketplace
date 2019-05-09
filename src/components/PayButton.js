@@ -42,7 +42,7 @@ const PayButton = ({ product, user }) => {
             description: product.description
           },
           email: {
-            customerEmail: user.attributes.email,
+            customerEmail: userAttributes.email,
             ownerEmail,
             shipped: product.shipped
           }
@@ -55,7 +55,7 @@ const PayButton = ({ product, user }) => {
           shippingAddress = createShippingAddress(result.charge.source);
         }
         const input = {
-          orderUserId: user.attributes.sub,
+          orderUserId: userAttributes.sub,
           orderProductId: product.id,
           shippingAddress
         };
@@ -91,7 +91,7 @@ const PayButton = ({ product, user }) => {
   return (
     <StripeCheckout
       token={handleCharge}
-      email={user.attributes.email}
+      email={userAttributes.email}
       name={product.description}
       amount={product.price}
       currency={stripeConfig.currency}
