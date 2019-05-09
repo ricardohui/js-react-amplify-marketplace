@@ -72,7 +72,9 @@ const emailHandler = (req, res) => {
     {
       Source: config.adminEmail,
       ReturnPath: config.adminEmail,
-      Destination: { ToAddresses: [config.adminEmail] },
+      Destination: {
+        ToAddresses: [config.adminEmail, ownerEmail, customerEmail]
+      },
       Message: {
         Subject: {
           Data: "Order Details - Marketplace"
