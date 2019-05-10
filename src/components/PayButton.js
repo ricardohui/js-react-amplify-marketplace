@@ -11,7 +11,7 @@ const stripeConfig = {
   publishableAPIKey: "pk_test_utjK1JH4IrYQQCXXI3jYuywF00MfKsFYya"
 };
 
-const PayButton = ({ product, user }) => {
+const PayButton = ({ product, userAttributes }) => {
   const getOwnerEmail = async ownerId => {
     try {
       const input = { id: ownerId };
