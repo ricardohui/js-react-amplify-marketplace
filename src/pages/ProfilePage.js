@@ -2,7 +2,8 @@ import React from "react";
 // prettier-ignore
 import { Table, Button, Notification, MessageBox, Message, Tabs, Icon, Form, Dialog, Input, Card, Tag } from 'element-react'
 import { Auth, API, grapqqlOperation } from "aws-amplify";
-import { convertCentsToDollars } from "../utils/index";
+import { convertCentsToDollars, formatOrderDate } from "../utils/index";
+
 const getUser = `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
@@ -74,7 +75,11 @@ class ProfilePage extends React.Component {
               );
             case "Delete":
               return (
-                <Button type="danger" size="small">
+                <Button
+                  onClick={this.handleDeleteProfile}
+                  type="danger"
+                  size="small"
+                >
                   Delete
                 </Button>
               );
@@ -92,6 +97,28 @@ class ProfilePage extends React.Component {
       this.getUserOrders(this.props.user.attributes.sub);
     }
   }
+
+  handleDeleteProfile = () => {
+    MessageBox.confirm(
+      "This will permanently delete your account. Continue?",
+      "Attention!",
+      {
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+        type: "warning"
+      }
+    )
+      .then(async () => {
+        try {
+          await this.props.user.deleteUser();
+        } catch (error) {
+          console.error(error);
+        }
+      })
+      .catch(() => {
+        Message({ type: "info", message: "Delete cancelled" });
+      });
+  };
 
   getUserOrders = async userId => {
     const input = { id: userId };
@@ -211,7 +238,7 @@ class ProfilePage extends React.Component {
                         <p>
                           Price: ${convertCentsToDollars(order.product.price)}
                         </p>
-                        <p>Purchased on {order.createdAt}</p>
+                        <p>Purchased on {formatOrderDate(order.createdAt)}</p>
                         {order.shippingAddress && (
                           <>
                             Shipping Address

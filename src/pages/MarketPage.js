@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import NewProduct from "../components/NewProduct";
 import Product from "../components/Product";
 import { deleteProduct } from "../graphql/mutations";
+import { formatProductDate } from "../utils";
 
 export const getMarket = `query GetMarket($id: ID!) {
   getMarket(id: $id) {
@@ -147,7 +148,7 @@ class MarketPage extends React.Component {
         <div className="item-center pt-2">
           <span style={{ color: "var(--lightSquidInk)", paddingBottom: "1em" }}>
             <Icon name="date" className="icon" />
-            {market.createdAt}
+            {formatProductDate(market.createdAt)}
           </span>
         </div>
         <Tabs type="border-card" value={isMarketOwner ? "1" : "2"}>
